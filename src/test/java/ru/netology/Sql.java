@@ -22,7 +22,6 @@ public class Sql {
 //    var countOrderEntity = "Select count(*) from order_entity;";
 
     public Sql() {
-
     }
 
     @SneakyThrows

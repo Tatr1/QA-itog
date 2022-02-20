@@ -1,17 +1,21 @@
 package ru.netology;
 
 public class AuthInfo {
-        private String number;
-        private String status;
-        private String mounth;
-        private String year;
-        private String holder;
-        private String cvc;
+    private String number;
+    private String status;
+    private String mounth;
+    private String year;
+    private String holder;
+    private String cvc;
 
-    public static String getNumberApproved() { return "4444 4444 4444 4441"; }
+    public static String getNumberApproved() {
+        return "4444 4444 4444 4441";
+    }
+
     public static String getNumberDeclined() {
         return "4444 4444 4444 4442";
     }
+
     public static String getNumberFake() {
         return "4444 4444 4444 4443";
     }
@@ -63,4 +67,4 @@ public class AuthInfo {
 
     public AuthInfo() {
     }
-  }
+}

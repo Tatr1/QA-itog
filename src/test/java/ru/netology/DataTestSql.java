@@ -29,7 +29,7 @@ public class DataTestSql {
     }
 
     @BeforeEach
-    void clean(){
+    void clean() {
         Sql.sqlCleanStatus();
     }
 
@@ -38,7 +38,7 @@ public class DataTestSql {
         setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonPay.click();
-        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60); //у кого-то тормозной комп
         Sql temp = new Sql();
         String tempStatus = temp.sqlQueryPaymentStatus();
@@ -49,10 +49,10 @@ public class DataTestSql {
 
     @Test
     void shouldPayActiveCardDeclined() throws InterruptedException {
-    setup();
+        setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonPay.click();
-        ClientPage.pay(AuthInfo.getNumberDeclined(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberDeclined(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60);
         Sql temp = new Sql();
         String tempSql = temp.sqlQueryPaymentStatus();
@@ -64,7 +64,7 @@ public class DataTestSql {
         setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonPay.click();
-        ClientPage.pay(AuthInfo.getNumberFake(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberFake(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60);
         Sql temp = new Sql();
         String tempSql = temp.sqlQueryPaymentStatus();
@@ -76,7 +76,7 @@ public class DataTestSql {
         setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonCredit.click();
-        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60);
         Sql temp = new Sql();
         String tempStatus = temp.sqlQueryCreditStatus();
@@ -88,7 +88,7 @@ public class DataTestSql {
         setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonCredit.click();
-        ClientPage.pay(AuthInfo.getNumberDeclined(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberDeclined(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60);
         Sql temp = new Sql();
         String tempSql = temp.sqlQueryCreditStatus();
@@ -100,7 +100,7 @@ public class DataTestSql {
         setup();
         var ClientPage = new ClientPage();
         ClientPage.buttonCredit.click();
-        ClientPage.pay(AuthInfo.getNumberFake(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
+        ClientPage.pay(AuthInfo.getNumberFake(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
         TimeUnit.SECONDS.sleep(60);
         Sql temp = new Sql();
         String tempSql = temp.sqlQueryCreditStatus();

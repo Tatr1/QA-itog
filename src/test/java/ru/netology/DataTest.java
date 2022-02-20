@@ -12,217 +12,219 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class DataTest {
 
- @BeforeAll
- static void setUpAll() {
-  SelenideLogger.addListener("allure", new AllureSelenide());
- }
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
- @AfterAll
- static void tearDownAll() {
-  SelenideLogger.removeListener("allure");
- }
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
 
- void setup() {
-  open("http://localhost:8080");
- }
+    void setup() {
+        open("http://localhost:8080");
+    }
 
- @Test
- @SneakyThrows
- void shouldPayActiveCardApproved(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
- ClientPage.getSuccessPay();
- }
+    @Test
+    @SneakyThrows
+    void shouldPayActiveCardApproved() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayActiveCardDeclined(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberDeclined(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailurePay();
-  }
+    @Test
+    void shouldPayActiveCardDeclined() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberDeclined(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailurePay();
+    }
 
- @Test
- void shouldPayFakeCard(){
-  setup();
-   var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberFake(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailurePay();
- }
+    @Test
+    void shouldPayFakeCard() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberFake(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailurePay();
+    }
 
- @Test
- void shouldPayMounth01(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),"01",DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getSuccessPay();
- }
+    @Test
+    void shouldPayMounth01() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), "01", DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayMounth12(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),"12",DataGenerator.generateYear(0),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getSuccessPay();
- }
+    @Test
+    void shouldPayMounth12() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), "12", DataGenerator.generateYear(0), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayYearNow(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(5),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getSuccessPay();
- }
+    @Test
+    void shouldPayYearNow() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(5), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayYear5(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(5),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getSuccessPay();
- }
+    @Test
+    void shouldPayYear5() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(5), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayCvc(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getSuccessPay();
- }
+    @Test
+    void shouldPayCvc() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getSuccessPay();
+    }
 
- @Test
- void shouldPayMounth00(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),"00",DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureMounthOrYear();
- }
+    @Test
+    void shouldPayMounth00() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), "00", DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureMounthOrYear();
+    }
 
- @Test
- void shouldPayMounth13(){
- setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),"13",DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureMounthOrYear();
- }
+    @Test
+    void shouldPayMounth13() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), "13", DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureMounthOrYear();
+    }
 
- @Test
- void shouldPayYearN(){
- setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(-1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureCard();
- }
+    @Test
+    void shouldPayYearN() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(-1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureCard();
+    }
 
- @Test
- void shouldPayYear6(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(6),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureMounthOrYear();
- }
+    @Test
+    void shouldPayYear6() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(6), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureMounthOrYear();
+    }
 
- @Test
- void shouldPayHolder1(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),"Вася",DataGenerator.generateCvc());
-  ClientPage.getFailurePay();
- }
+    @Test
+    void shouldPayHolder1() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), "Вася", DataGenerator.generateCvc());
+        ClientPage.getFailurePay();
+    }
 
- @Test
- void shouldPayHolder2(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),"d123",DataGenerator.generateCvc());
-   ClientPage.getFailurePay();
- }
+    @Test
+    void shouldPayHolder2() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), "d123", DataGenerator.generateCvc());
+        ClientPage.getFailurePay();
+    }
 
- @Test
- void shouldFailCVC(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),"trt");
-  ClientPage.getFailureZerofield();
- }
+    @Test
+    void shouldFailCVC() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), "trt");
+        ClientPage.getFailureZerofield();
+    }
 
- @Test
- void shouldCardNull(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay("",DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureFormat();
- }
+    @Test
+    void shouldCardNull() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay("", DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureFormat();
+    }
 
- @Test
- void shouldCardFail(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay("1234567890",DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureFormat();
- }
+    @Test
+    void shouldCardFail() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay("1234567890", DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureFormat();
+    }
 
- @Test
- void shouldMounthNull(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),"",DataGenerator.generateYear(1),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureFormat();
- }
+    @Test
+    void shouldMounthNull() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), "", DataGenerator.generateYear(1), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureFormat();
+    }
 
- @Test
- void shouldYearNull(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),"",DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureFormat();}
+    @Test
+    void shouldYearNull() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), "", DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureFormat();
+    }
 
- @Test
- void shouldHolderNull(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),"",DataGenerator.generateCvc());
-  ClientPage.getFailureZerofield(); }
+    @Test
+    void shouldHolderNull() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), "", DataGenerator.generateCvc());
+        ClientPage.getFailureZerofield();
+    }
 
- @Test
- void shouldCVCNull(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(1),DataGenerator.generateYear(1),DataGenerator.generateName(),"");
-ClientPage.getFailureZerofield();
- }
+    @Test
+    void shouldCVCNull() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(1), DataGenerator.generateYear(1), DataGenerator.generateName(), "");
+        ClientPage.getFailureZerofield();
+    }
 
- @Test
- void shouldPayCurrentData(){
-  setup();
-  var ClientPage = new ClientPage();
-  ClientPage.buttonPay.click();
-  ClientPage.pay(AuthInfo.getNumberApproved(),DataGenerator.generateMounth(-1),DataGenerator.generateYear(0),DataGenerator.generateName(),DataGenerator.generateCvc());
-  ClientPage.getFailureMounthOrYear();
- }
- }
+    @Test
+    void shouldPayCurrentData() {
+        setup();
+        var ClientPage = new ClientPage();
+        ClientPage.buttonPay.click();
+        ClientPage.pay(AuthInfo.getNumberApproved(), DataGenerator.generateMounth(-1), DataGenerator.generateYear(0), DataGenerator.generateName(), DataGenerator.generateCvc());
+        ClientPage.getFailureMounthOrYear();
+    }
+}
 
 
 
