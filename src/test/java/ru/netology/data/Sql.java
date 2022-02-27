@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.data;
 
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
@@ -16,10 +16,10 @@ public class Sql {
     static String statusPayment = "SELECT status FROM payment_entity;";
     static String statusCredit = "SELECT status FROM credit_request_entity;";
     static String amount = "SELECT amount FROM payment_entity;";
-    static String deletePayment = "DELETE from payment_entity;";
-    static String deleteCredit = "Delete from credit_request_entity;";
-    static String deleteOrder = "Delete from order_entity;";
-//    var countOrderEntity = "Select count(*) from order_entity;";
+    static String deletePayment = "DELETE FROM payment_entity;";
+    static String deleteCredit = "DELETE FROM credit_request_entity;";
+    static String deleteOrder = "DELETE FROM order_entity;";
+    static String countOrderEntity = "SELECT id FROM order_entity;";
 
     public Sql() {
     }
@@ -41,7 +41,7 @@ public class Sql {
     public String sqlQueryPaymentStatus() {
         var runner = new QueryRunner();
         try (
-                var connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
+                var connection = DriverManager.getConnection(url, login, password);
         ) {
             String sqlPayment = runner.query(connection, statusPayment, new ScalarHandler<>());
             return sqlPayment;
@@ -51,6 +51,7 @@ public class Sql {
 
     @SneakyThrows
     public String sqlQueryCreditStatus() {
+        var runner = new QueryRunner();
         try (
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
         ) {
@@ -61,11 +62,23 @@ public class Sql {
 
     @SneakyThrows
     public Integer sqlQueryPaymentAmount() {
+        var runner = new QueryRunner();
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
+                Connection connection = DriverManager.getConnection(url, login, password);
         ) {
             Integer sqlAmount = runner.query(connection, amount, new ScalarHandler<>());
             return sqlAmount;
+        }
+    }
+
+    @SneakyThrows
+    public Integer sqlQueryOrderEntity() {
+        var runner = new QueryRunner();
+        try (
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
+        ) {
+            Integer sqlOrder = runner.query(connection, countOrderEntity, new ScalarHandler<>());
+            return sqlOrder;
         }
     }
 }

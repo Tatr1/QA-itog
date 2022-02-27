@@ -13,24 +13,11 @@ compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
 repositories {
-   jcenter()
     mavenCentral()
 }
 
-//buildscript {
-//    repositories {
-//        jcenter()
-//    }
-//    dependencies {
-//        classpath "io.qameta.allure-gradle:2.3"
-//    }
-//}
-
 allure {
-//    autoconfigure = true
-//    aspectjweaver = true
     version = '2.16.1'
- //   allureJavaVersion = LASTEST_VERSION
     useJUnit5 {
         version = '2.16.1'
     }
@@ -49,7 +36,8 @@ dependencies {
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'com.codeborne:selenide:6.1.2'
     testImplementation 'com.google.code.gson:gson:2.8.9'
-    }
+    testImplementation 'io.rest-assured:rest-assured:4.3.0'
+}
 
 configurations {
     testCompile
