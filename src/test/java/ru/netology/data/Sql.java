@@ -4,9 +4,9 @@ import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.concurrent.TimeUnit;
 
 public class Sql {
     QueryRunner runner = new QueryRunner();
@@ -15,11 +15,10 @@ public class Sql {
     static String password = "pass";
     static String statusPayment = "SELECT status FROM payment_entity;";
     static String statusCredit = "SELECT status FROM credit_request_entity;";
-    static String amount = "SELECT amount FROM payment_entity;";
+    static String countOrderEntity = "SELECT id FROM order_entity;";
     static String deletePayment = "DELETE FROM payment_entity;";
     static String deleteCredit = "DELETE FROM credit_request_entity;";
     static String deleteOrder = "DELETE FROM order_entity;";
-    static String countOrderEntity = "SELECT id FROM order_entity;";
 
     public Sql() {
     }
@@ -29,7 +28,6 @@ public class Sql {
         QueryRunner runner = new QueryRunner();
         try (
                 var connection = DriverManager.getConnection(url, login, password);
-
         ) {
             runner.update(connection, deletePayment);
             runner.update(connection, deleteCredit);
@@ -38,22 +36,23 @@ public class Sql {
     }
 
     @SneakyThrows
-    public String sqlQueryPaymentStatus() {
+    public static String sqlQueryPaymentStatus() {
         var runner = new QueryRunner();
+        TimeUnit.SECONDS.sleep(10);
         try (
                 var connection = DriverManager.getConnection(url, login, password);
         ) {
             String sqlPayment = runner.query(connection, statusPayment, new ScalarHandler<>());
             return sqlPayment;
         }
-
     }
 
     @SneakyThrows
-    public String sqlQueryCreditStatus() {
+    public static String sqlQueryCreditStatus() {
         var runner = new QueryRunner();
+        TimeUnit.SECONDS.sleep(10);
         try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
+                Connection connection = DriverManager.getConnection(url, login, password);
         ) {
             String sqlCredit = runner.query(connection, statusCredit, new ScalarHandler<>());
             return sqlCredit;
@@ -61,21 +60,11 @@ public class Sql {
     }
 
     @SneakyThrows
-    public Integer sqlQueryPaymentAmount() {
+    public static Integer sqlQueryOrderEntity() {
         var runner = new QueryRunner();
+        TimeUnit.SECONDS.sleep(10);
         try (
                 Connection connection = DriverManager.getConnection(url, login, password);
-        ) {
-            Integer sqlAmount = runner.query(connection, amount, new ScalarHandler<>());
-            return sqlAmount;
-        }
-    }
-
-    @SneakyThrows
-    public Integer sqlQueryOrderEntity() {
-        var runner = new QueryRunner();
-        try (
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3300/app", "app", "pass");
         ) {
             Integer sqlOrder = runner.query(connection, countOrderEntity, new ScalarHandler<>());
             return sqlOrder;

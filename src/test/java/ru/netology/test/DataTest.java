@@ -3,15 +3,12 @@ package ru.netology.test;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
-import ru.netology.data.Sql;
 import ru.netology.page.ClientPage;
-import ru.netology.page.PagePay;
-
-import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static ru.netology.data.DataGenerator.*;
+import static ru.netology.data.Sql.*;
 
 public class DataTest {
 
@@ -31,275 +28,205 @@ public class DataTest {
     }
 
     @AfterEach
-    void clean() {
-        Sql.sqlCleanStatus();
+    void clean() {sqlCleanStatus();
     }
 
     @Test
-    void shouldPayActiveCardApproved() throws InterruptedException {
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getActiveCardApproved());
-        PagePay.getSuccessPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("APPROVED", temp.sqlQueryPaymentStatus());
-        assertEquals(4500000, temp.sqlQueryPaymentAmount());
+    void shouldPayActiveCardApproved() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getActiveCardApproved());
+        pagePay.getSuccessPay();
+        assertEquals("APPROVED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayActiveCardDeclined() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getActiveCardDeclined());
-        PagePay.getFailurePay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("DECLINED", temp.sqlQueryPaymentStatus());
+    void shouldPayActiveCardDeclined() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getActiveCardDeclined());
+        pagePay.getFailurePay();
+        assertEquals("DECLINED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayFakeCard() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getFakeCard());
-        PagePay.getFailurePay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryPaymentStatus());
+    void shouldPayFakeCard() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getFakeCard());
+        pagePay.getFailurePay();
+        assertEquals(null, sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayMounth01() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getMounth01());
-        PagePay.getSuccessPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("APPROVED", temp.sqlQueryPaymentStatus());
+    void shouldPayMounth01() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getMounth01());
+        pagePay.getSuccessPay();
+        assertEquals("APPROVED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayMounth12() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getMounth12());
-        PagePay.getSuccessPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("APPROVED", temp.sqlQueryPaymentStatus());
+    void shouldPayMounth12() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getMounth12());
+        pagePay.getSuccessPay();
+        assertEquals("APPROVED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayYearNow() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getYearNow());
-        PagePay.getSuccessPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("APPROVED", temp.sqlQueryPaymentStatus());
+    void shouldPayYearNow() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getYearNow());
+        pagePay.getSuccessPay();
+        assertEquals("APPROVED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayYear5() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getYear5());
-        PagePay.getSuccessPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals("APPROVED", temp.sqlQueryPaymentStatus());
+    void shouldPayYear5() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getYear5());
+        pagePay.getSuccessPay();
+        assertEquals("APPROVED", sqlQueryPaymentStatus());
     }
 
     @Test
-    void shouldPayMounth00() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getMounth00());
-        PagePay.getFailureMounthOrYearPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayMounth00() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getMounth00());
+        pagePay.getFailureMounthOrYearPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayMounth13() throws InterruptedException{
+    void shouldPayMounth13() {
         var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
+        var PagePay = ClientPage.buttonPay();
         PagePay.pay(getMounth13());
         PagePay.getFailureMounthOrYearPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayYearNegative() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getYearNegative());
-        PagePay.getFailureCardPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        var tempSql = temp.sqlQueryOrderEntity();
-        assertEquals(null, tempSql);
+    void shouldPayYearNegative() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getYearNegative());
+        pagePay.getFailureCardPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayYear6() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getYear6());
-        PagePay.getFailureMounthOrYearPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayYear6() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getYear6());
+        pagePay.getFailureMounthOrYearPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayHolder1() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getHolder1());
-        PagePay.getFailurePay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayHolder1() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getHolder1());
+        pagePay.getFailurePay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayHolder2() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getHolder2());
-        PagePay.getFailurePay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayHolder2() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getHolder2());
+        pagePay.getFailurePay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayFailCVC1() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getFailCVC1());
-        PagePay.getFailureZerofieldPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayFailCVC1() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getFailCVC1());
+        pagePay.getFailureZerofieldPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayFailCVC2() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getFailCVC2());
-        PagePay.getFailureFormatPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayFailCVC2() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getFailCVC2());
+        pagePay.getFailureFormatPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayCardNull() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getCardNull());
-        PagePay.getFailureFormatPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayCardNull() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getCardNull());
+        pagePay.getFailureFormatPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayCardFail() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getCardFail());
-        PagePay.getFailureFormatPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayCardFail() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getCardFail());
+        pagePay.getFailureFormatPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayMounthNull() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getMounthNull());
-        PagePay.getFailureFormatPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayMounthNull() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getMounthNull());
+        pagePay.getFailureFormatPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayYearNull() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getYearNull());
-        PagePay.getFailureFormatPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayYearNull() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getYearNull());
+        pagePay.getFailureFormatPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayHolderNull() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getHolderNull());
-        PagePay.getFailureZerofieldPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayHolderNull() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getHolderNull());
+        pagePay.getFailureZerofieldPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayCVCNull() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getCVCNull());
-        PagePay.getFailureZerofieldPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        var tempSql = temp.sqlQueryOrderEntity();
-        assertEquals(null, tempSql);
+    void shouldPayCVCNull() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getCVCNull());
+        pagePay.getFailureZerofieldPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 
     @Test
-    void shouldPayCurrentData() throws InterruptedException{
-        var ClientPage = new ClientPage();
-        var PagePay = new PagePay();
-        ClientPage.buttonPay();
-        PagePay.pay(getCurrentData());
-        PagePay.getFailureMounthOrYearPay();
-        TimeUnit.SECONDS.sleep(30);
-        Sql temp = new Sql();
-        assertEquals(null, temp.sqlQueryOrderEntity());
+    void shouldPayCurrentData() {
+        var clientPage = new ClientPage();
+        var pagePay = clientPage.buttonPay();
+        pagePay.pay(getCurrentData());
+        pagePay.getFailureMounthOrYearPay();
+        assertEquals(null, sqlQueryOrderEntity());
     }
 }
 

@@ -30,7 +30,10 @@ public class DataGenerator {
         String cvc = faker.numerify("###");
         return cvc;
     }
-    public static String getNumberApproved() { return "4444 4444 4444 4441"; }
+
+    public static String getNumberApproved() {
+        return "4444 4444 4444 4441";
+    }
 
     public static String getNumberDeclined() {
         return "4444 4444 4444 4442";
@@ -41,201 +44,92 @@ public class DataGenerator {
     }
 
     public static AuthInfo getActiveCardApproved() {
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(0);
-        tempAuthInfo.year = generateYear(0);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
-}
+        return new AuthInfo(getNumberApproved(), generateMounth(0), generateYear(0), generateName(), generateCvc());
+    }
+
     public static AuthInfo getActiveCardDeclined() {
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberDeclined();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+        return new AuthInfo(getNumberDeclined(), generateMounth(1), generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getFakeCard(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberFake();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getFakeCard() {
+        return new AuthInfo(getNumberFake(), generateMounth(1), generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getMounth01(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = "01";
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getMounth01() {
+        return new AuthInfo(getNumberApproved(), "01", generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getMounth12(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = "12";
-        tempAuthInfo.year = generateYear(0);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
-     }
-    public static AuthInfo getYearNow(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(0);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getMounth12() {
+        return new AuthInfo(getNumberApproved(), "12", generateYear(0), generateName(), generateCvc());
     }
-    public static AuthInfo getYear5(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(0);
-        tempAuthInfo.year = generateYear(5);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getYearNow() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(0), generateName(), generateCvc());
     }
-    public static AuthInfo getMounth00(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = "00";
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getYear5() {
+        return new AuthInfo(getNumberApproved(), generateMounth(0), generateYear(5), generateName(), generateCvc());
+
     }
-    public static AuthInfo getMounth13(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = "13";
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getMounth00() {
+        return new AuthInfo(getNumberApproved(), "00", generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getYearNegative(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(0);
-        tempAuthInfo.year = generateYear(-1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
-     }
-    public static AuthInfo getYear6(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(0);
-        tempAuthInfo.year = generateYear(6);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getMounth13() {
+        return new AuthInfo(getNumberApproved(), "13", generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getHolder1(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = "пппп";
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getYearNegative() {
+        return new AuthInfo(getNumberApproved(), generateMounth(0), generateYear(-1), generateName(), generateCvc());
     }
-    public static AuthInfo getHolder2(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = "1234";
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getYear6() {
+        return new AuthInfo(getNumberApproved(), generateMounth(0), generateYear(6), generateName(), generateCvc());
     }
-    public static AuthInfo getFailCVC1(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = "ttt";
-        return tempAuthInfo;
+
+    public static AuthInfo getHolder1() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), "пппп", generateCvc());
     }
-    public static AuthInfo getFailCVC2(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = "1";
-        return tempAuthInfo;
+
+    public static AuthInfo getHolder2() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), "1234", generateCvc());
     }
-    public static AuthInfo getCardNull(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = "";
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getFailCVC1() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), generateName(), "ttt");
     }
-    public static AuthInfo getCardFail(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = "123456789";
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getFailCVC2() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), generateName(), "1");
     }
-    public static AuthInfo getMounthNull(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = "";
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getCardNull() {
+        return new AuthInfo("", generateMounth(1), generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getYearNull(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = "";
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getCardFail() {
+        return new AuthInfo("123456789", generateMounth(1), generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getHolderNull(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = "";
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getMounthNull() {
+        return new AuthInfo(getNumberApproved(), "", generateYear(1), generateName(), generateCvc());
     }
-    public static AuthInfo getCVCNull(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(1);
-        tempAuthInfo.year = generateYear(1);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = "";
-        return tempAuthInfo;
+
+    public static AuthInfo getYearNull() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), "", generateName(), generateCvc());
     }
-    public static AuthInfo getCurrentData(){
-        AuthInfo tempAuthInfo = new AuthInfo();
-        tempAuthInfo.number = getNumberApproved();
-        tempAuthInfo.mounth = generateMounth(-1);
-        tempAuthInfo.year = generateYear(0);
-        tempAuthInfo.holder = generateName();
-        tempAuthInfo.cvc = generateCvc();
-        return tempAuthInfo;
+
+    public static AuthInfo getHolderNull() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), "", generateCvc());
     }
+
+    public static AuthInfo getCVCNull() {
+        return new AuthInfo(getNumberApproved(), generateMounth(1), generateYear(1), generateName(), "");
+    }
+
+    public static AuthInfo getCurrentData() {
+        return new AuthInfo(getNumberApproved(), generateMounth(-1), generateYear(0), generateName(), generateCvc());
+    }
+
 }

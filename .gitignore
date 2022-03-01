@@ -40,3 +40,10 @@ out/
 *.zip
 *.tar.gz
 *.rar
+
+Thumbs.db*
+.DS_Store*
+node_modules
+.idea
+target
+*.iml
