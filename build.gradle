@@ -45,4 +45,7 @@ configurations {
 
 test {
     useJUnitPlatform()
+    systemProperty 'db.url', System.getProperty('db.url', 'jdbc:mysql://localhost:3300/app')
+    systemProperty 'db.user', System.getProperty('db.user', 'app')
+    systemProperty 'db.password', System.getProperty('db.password', 'pass')
 }

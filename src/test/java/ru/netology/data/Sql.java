@@ -10,9 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Sql {
     QueryRunner runner = new QueryRunner();
-    static String url = "jdbc:mysql://localhost:3300/app";
-    static String login = "app";
-    static String password = "pass";
+    static String url = System.getProperty("db.url");           //"jdbc:mysql://localhost:3300/app";
+    static String login = System.getProperty("db.user");        //"app";
+    static String password = System.getProperty("db.password"); //"pass";
     static String statusPayment = "SELECT status FROM payment_entity;";
     static String statusCredit = "SELECT status FROM credit_request_entity;";
     static String countOrderEntity = "SELECT id FROM order_entity;";

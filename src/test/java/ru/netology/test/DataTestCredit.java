@@ -33,7 +33,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditActiveCardApproved()  {
+    void shouldCreditActiveCardApproved() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getActiveCardApproved());
@@ -42,7 +42,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditActiveCardDeclined()  {
+    void shouldCreditActiveCardDeclined() {
         var ClientPage = new ClientPage();
         var PageCredit = ClientPage.buttonCredit();
         PageCredit.credit(getActiveCardDeclined());
@@ -51,7 +51,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditFakeCard()  {
+    void shouldCreditFakeCard() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getFakeCard());
@@ -60,7 +60,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditMounth01()  {
+    void shouldCreditMounth01() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getMounth01());
@@ -69,7 +69,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditMounth12()  {
+    void shouldCreditMounth12() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getMounth12());
@@ -78,7 +78,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditYearNow()  {
+    void shouldCreditYearNow() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getYearNow());
@@ -87,7 +87,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditYear5()  {
+    void shouldCreditYear5() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getYear5());
@@ -96,7 +96,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditMounth00()  {
+    void shouldCreditMounth00() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getMounth00());
@@ -105,7 +105,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditMounth13()  {
+    void shouldCreditMounth13() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getMounth13());
@@ -114,7 +114,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditYearNegative()  {
+    void shouldCreditYearNegative() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getYearNegative());
@@ -123,7 +123,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditYear6()  {
+    void shouldCreditYear6() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getYear6());
@@ -132,7 +132,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditHolder1()  {
+    void shouldCreditHolder1() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getHolder1());
@@ -141,7 +141,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditHolder2()  {
+    void shouldCreditHolder2() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getHolder2());
@@ -150,7 +150,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditFailCVC1()  {
+    void shouldCreditFailCVC1() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getFailCVC1());
@@ -159,7 +159,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditFailCVC2()  {
+    void shouldCreditFailCVC2() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getFailCVC2());
@@ -168,7 +168,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditCardNull()  {
+    void shouldCreditCardNull() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getCardNull());
@@ -177,7 +177,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditCardFail()  {
+    void shouldCreditCardFail() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getCardFail());
@@ -186,7 +186,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditMounthNull()  {
+    void shouldCreditMounthNull() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getMounthNull());
@@ -195,7 +195,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditYearNull()  {
+    void shouldCreditYearNull() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getYearNull());
@@ -204,7 +204,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditHolderNull()  {
+    void shouldCreditHolderNull() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getHolderNull());
@@ -213,7 +213,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditCVCNull()  {
+    void shouldCreditCVCNull() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getCVCNull());
@@ -222,7 +222,7 @@ public class DataTestCredit {
     }
 
     @Test
-    void shouldCreditCurrentData()  {
+    void shouldCreditCurrentData() {
         var clientPage = new ClientPage();
         var pageCredit = clientPage.buttonCredit();
         pageCredit.credit(getCurrentData());

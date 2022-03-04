@@ -19,26 +19,26 @@ public class PageCredit {
     }
 
     public void getSuccessCredit() {
-        $(".notification_status_ok").shouldHave(text("Успешно"), Duration.ofSeconds(15));
+        $(".notification_status_ok").shouldHave(text("Успешно"), Duration.ofSeconds(20));
     }
 
     public void getFailureCredit() {
-        $(".notification_status_error").shouldHave(text("Ошибка"), Duration.ofSeconds(15));
+        $(".notification_status_error").shouldHave(text("Ошибка"), Duration.ofSeconds(20));
     }
 
     public void getFailureCardCredit() {
-        $(".input__sub").shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(20));
     }
 
     public void getFailureMounthOrYearCredit() {
-        $(".input__sub").shouldHave(text("Неверно указан срок действия карты"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Неверно указан срок действия карты"), Duration.ofSeconds(20));
     }
 
     public void getFailureFormatCredit() {
-        $(".input__sub").shouldHave(text("Неверный формат"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Неверный формат"), Duration.ofSeconds(20));
     }
 
     public void getFailureZerofieldCredit() {
-        $(".input__sub").shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(20));
     }
 }

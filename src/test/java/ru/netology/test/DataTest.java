@@ -23,9 +23,10 @@ public class DataTest {
     }
 
     @BeforeEach
-    void setup() {
+   void setup() {
         open("http://localhost:8080");
     }
+
 
     @AfterEach
     void clean() {sqlCleanStatus();

@@ -19,27 +19,27 @@ public class PagePay {
     }
 
     public void getSuccessPay() {
-        $(".notification_status_ok").shouldHave(text("Успешно"), Duration.ofSeconds(15));
+        $(".notification_status_ok").shouldHave(text("Успешно"), Duration.ofSeconds(20));
     }
 
     public void getFailurePay() {
-        $(".notification_status_error").shouldHave(text("Ошибка"), Duration.ofSeconds(15));
+        $(".notification_status_error").shouldHave(text("Ошибка"), Duration.ofSeconds(20));
     }
 
     public void getFailureCardPay() {
-        $(".input__sub").shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Истёк срок действия карты"), Duration.ofSeconds(20));
     }
 
     public void getFailureMounthOrYearPay() {
-        $(".input__sub").shouldHave(text("Неверно указан срок действия карты"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Неверно указан срок действия карты"), Duration.ofSeconds(20));
     }
 
     public void getFailureFormatPay() {
-        $(".input__sub").shouldHave(text("Неверный формат"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Неверный формат"), Duration.ofSeconds(20));
     }
 
     public void getFailureZerofieldPay() {
-        $(".input__sub").shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(15));
+        $(".input__sub").shouldHave(text("Поле обязательно для заполнения"), Duration.ofSeconds(20));
     }
 
 }
