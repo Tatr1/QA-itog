@@ -27,7 +27,7 @@ public class DataTestCredit {
         open("http://localhost:8080");
     }
 
-    @AfterEach
+    @BeforeEach
     void clean() {
         sqlCleanStatus();
     }

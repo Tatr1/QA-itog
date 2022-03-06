@@ -38,7 +38,7 @@ public class Sql {
     @SneakyThrows
     public static String sqlQueryPaymentStatus() {
         var runner = new QueryRunner();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(1);
         try (
                 var connection = DriverManager.getConnection(url, login, password);
         ) {
@@ -50,7 +50,7 @@ public class Sql {
     @SneakyThrows
     public static String sqlQueryCreditStatus() {
         var runner = new QueryRunner();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(1);
         try (
                 Connection connection = DriverManager.getConnection(url, login, password);
         ) {
@@ -62,7 +62,7 @@ public class Sql {
     @SneakyThrows
     public static Integer sqlQueryOrderEntity() {
         var runner = new QueryRunner();
-        TimeUnit.SECONDS.sleep(10);
+        TimeUnit.SECONDS.sleep(1);
         try (
                 Connection connection = DriverManager.getConnection(url, login, password);
         ) {

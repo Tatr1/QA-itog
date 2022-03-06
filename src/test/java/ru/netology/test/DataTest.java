@@ -28,7 +28,7 @@ public class DataTest {
     }
 
 
-    @AfterEach
+    @BeforeEach
     void clean() {sqlCleanStatus();
     }
 
