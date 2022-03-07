@@ -10,7 +10,6 @@
 
 ![](../doc/chrome_CIc6N11lGc.png)
 ![](../doc/chrome_PgfytrK4oI.png)
-![](../doc/full_4lxFmTQm4M.png)
 
 Все выявленые дефекты зафиксированы в Issues.
 
