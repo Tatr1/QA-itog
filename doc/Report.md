@@ -9,17 +9,8 @@
 Разработано 44 тестовых сценария основного функционала (клиентской стороны пользовательского интерфейса и программно-аппаратной части веб-сервиса с учетом представленных валидных данных), из них 81.81 % успешных, 18,19 % неуспешных.
 
 ![](../../chrome_CIc6N11lGc.png)
-
-В процессе тестирования выявлены следующие критические дефекты (для обоих функционалов):
-
-Происходит одобрение оплаты/покупки в кредит:
-- с несуществующим месяцем "00":
-![](../build/allure-results/42003654-f9e9-4332-84ea-90510bd3bcf6-attachment_pay00.png) ![](../build/allure-results/ebb66447-d2ab-443a-9345-8618d3a3ff21-attachment_credit00.png)
-- с картой в статусе "declined":
-![](../build/allure-results/f95c8c1e-11c9-4842-afd6-39490ffb4baf-attachment_payD.png)![](../build/allure-results/d512c1d5-30c9-405b-84fd-81c4701c1a68-attachment_creditD.png)
-- с невалидными значениями держателя карты:
-![](../build/allure-results/e0d0f39b-a9a8-4260-9215-838812cb6681-attachment_payH1.png)![](../build/allure-results/37d847cf-8f84-4e95-844e-d66377f220e1-attachment_payH2.png)
-![](../build/allure-results/5dffb507-b2ac-443c-9461-0f00c12f3ee7-attachment_creditH1.png)![](../build/allure-results/a7df1a49-d0f4-4ecf-9ee5-d26f1ee63272-attachment_creditH2.png)
+![](../../chrome_PgfytrK4oI.png)
+![](../../full_4lxFmTQm4M.png)
 
 Все выявленые дефекты зафиксированы в Issues.
 
